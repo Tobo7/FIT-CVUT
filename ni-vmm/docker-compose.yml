@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    ports:
+      - 8083:5432
+    volumes:
+      - ./docker-data/postgres:/var/lib/postgresql/data
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    environment:
+      - POSTGRES_PASSWORD=strongpassword
+      - POSTGRES_USER=admin
+
+#  pgAdmin:
+#    image: dpage/pgadmin4
+#    ports:
+#      - 8082:80
+#    environment:
+#      - PGADMIN_DEFAULT_EMAIL=admin@admin.cz
+#      - PGADMIN_DEFAULT_PASSWORD=strongpassword

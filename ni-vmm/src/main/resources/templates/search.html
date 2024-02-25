@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{base}">
+
+<head>
+    <script th:src="@{/output/search.bundle.js}"></script>
+</head>
+
+<body>
+<main layout:fragment="content">
+    <form method="post" action="/search">
+        <div class="container-fluid search-container">
+
+            <div class="container">
+
+                <div class="row mb-2">
+                    <div class="col col-md-12">
+                        <h2>Search settings</h2>
+                    <hr>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-12">
+                        <select name="genomeId" id="select-tools" class="form-select" placeholder="Pick a tool...">
+                            <option th:each="genome:${genomes}" th:value="${genome.id}" th:text="${genome.name}"></option>
+                        </select>
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-2">
+                        <div class="input-group">
+                            <span class="input-group-text" id="settingA">A</span>
+                            <input name="AWeight" type="number" class="form-control" id="inputA" aria-describedby="settingA" th:value="${settings.getOrDefault('AWeight', -2)}">
+                        </div>
+                    </div>
+                    <div class="col col-md-2">
+                        <div class="input-group">
+                            <span class="input-group-text" id="settingC">C</span>
+                            <input name="CWeight" type="number" class="form-control" id="inputC" aria-describedby="settingC" th:value="${settings.getOrDefault('CWeight', -1)}">
+                        </div>
+                    </div>
+                    <div class="col col-md-2">
+                        <div class="input-group">
+                            <span class="input-group-text" id="settingG">G</span>
+                            <input name="GWeight"  type="number" class="form-control" id="inputG" aria-describedby="settingG" th:value="${settings.getOrDefault('GWeight', 1)}">
+                        </div>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <div class="input-group">
+                            <span class="input-group-text" id="settingT">T</span>
+                            <input name="TWeight" type="number" class="form-control" id="inputT" aria-describedby="settingT" th:value="${settings.getOrDefault('TWeight', 2)}">
+                        </div>
+                    </div>
+
+                    <div class="col col-md-2">
+                        <button type="button" class="btn btn-danger restore-defaults-button">Restore defaults</button>
+                    </div>
+
+
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="setting1">Sakoe-Chiba band width</span>
+                            <input name="sakoeChibaValue" type="number" class="form-control" placeholder="Disabled" aria-label="Disabled" aria-describedby="setting1" th:value="${settings.getOrDefault('sakoeChibaValue', '')}">
+                            <button class="btn btn-outline-secondary input-disable-button" type="button" id="button-addon2">Disable</button>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-text" id="setting2">Crop sequence width</span>
+                            <input name="maxSequenceLength" type="number" class="form-control" placeholder="Disabled" aria-describedby="setting2" th:value="${settings.getOrDefault('maxSequenceLength', '')}">
+                            <button class="btn btn-outline-secondary input-disable-button" type="button" id="button-addon3">Disable</button>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col col-md-2">
+                        <button type="submit" class="btn btn-primary search-button">Submit
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none"></span>
+                        </button>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+    <div class="container mb-3" id="searchResults"></div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Visualisation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="chart-scroll-wrap">
+                        <div class="chart-wrap chart1-wrap">
+                            <canvas id="chart1"></canvas>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="chart-scroll-wrap">
+                        <div class="chart-wrap chart2-wrap">
+                            <canvas id="chart2"></canvas>
+                        </div>
+                    </div>
+
+                    <div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</main>
+</body>
+</html>

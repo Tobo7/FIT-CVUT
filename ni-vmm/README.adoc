@@ -1,0 +1,4 @@
+Pro lokální vývoj před startem pusťte skript `./prepareApp.sh`. To zajistí start kontejneru s databází a instalaci npm závislostí.
+
+:imagesdir: docs/
+include::docs/README.adoc[]

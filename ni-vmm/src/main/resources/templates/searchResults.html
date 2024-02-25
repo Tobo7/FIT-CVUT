@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<body>
+<main >
+
+            <div id="searchResults">
+
+                <div class="row mb-2">
+                    <div class="col col-md-12 title-heading">
+                        <h2>Results</h2>
+                        <span class="metadata">
+                             (<span th:text="${searchTime}"></span>s)
+                        </span>
+
+                    </div>
+
+                    <hr>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Distance</th>
+                        <th scope="col">Visualize</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="row,iter: ${searchResultGenomes}">
+                        <th th:text="${iter.index}"></th>
+                        <td th:text="${row.genome.name}"></td>
+                        <td th:text="${row.similarity}"></td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                    th:attr="onclick=|openModal(${searchId}, ${row.genome.id})|" >
+                                 <i class="bi bi-graph-up"></i>
+                            </button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+
+
+
+
+
+
+</main>
+</body>
+</html>

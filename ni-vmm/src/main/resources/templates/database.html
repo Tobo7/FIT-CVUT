@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="base">
+<body>
+<head>
+    <script th:src="@{/output/database.bundle.js}"></script>
+</head>
+<main layout:fragment="content">
+    <form method="post" action="/upload" enctype="multipart/form-data">
+        <div class="container">
+
+
+            <div class="row mb-2">
+                <div class="col col-md-12">
+                    <h2>Upload file</h2>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-5">
+                    <input class="form-control" type="file" id="formFile" name="file" accept=".ffn">
+                </div>
+
+                <div class="col col-md-2">
+                    <div class="form-check form-switch">
+                        <input name="importExclude" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" th:checked="${importExcludeDefault}">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">Exclude imported</label>
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+    <div class="container">
+
+        <div class="row mb-2 title-heading">
+            <div class="col col-md-9">
+                <h2>All genomes</h2>
+                <span class="metadata">
+                    (<span th:text="${genomes.size()}"></span>)
+                </span>
+
+            </div>
+
+            <div class="col col-md-3" style="text-align: right">
+                <form method="post" action="/database/excludeAll" style="display:inline-block;">
+                    <button type="submit" class="btn btn-sm btn-secondary">Exclude all</button>
+                </form>
+                <form method="post" action="/database/includeAll" style="display:inline-block;">
+                    <button type="submit" class="btn btn-sm btn-secondary">Include all</button>
+                </form>
+                <form method="post" action="/database/removeAll" style="display:inline-block;">
+                    <button type="submit" class="btn btn-sm btn-danger">Remove all</button>
+                </form>
+            </div>
+            <hr>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Exclude</th>
+                <th scope="col">Remove</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="row,iter: ${genomes}" th:class="${row.isExcluded() ? 'table-danger' : ''}" th:attr="data-genome-id=${row.getId()}">
+                <td th:text="${row.name}"></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            th:attr="onclick=|excludeGenome(${row.id}, ${!row.isExcluded()})|" >
+                        <i class="bi bi-slash-circle"></i>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            th:attr="onclick=|deleteGenome( ${row.id})|" >
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</main>
+</body>
+</html>

@@ -1,0 +1,25 @@
+@import "navbar.scss";
+
+main {
+  margin-left: 280px;
+}
+
+h2 {
+  font-size: 21px;
+  margin-top: 25px;
+}
+
+.title-heading {
+  margin-top: 25px;
+
+  h2 {
+    font-size: 21px;
+    display: inline-block;
+    margin-top: 0;
+  }
+
+  .metadata {
+    color: gray;
+  }
+
+}
