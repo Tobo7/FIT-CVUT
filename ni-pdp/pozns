@@ -1,0 +1,20 @@
+extra body:
+1) čte jen master (zadání grafu)
+2) počítá i master
+3) sdílení minima/maxima
+
+
+boost.mpi
+
+mpicc c
+cc++
+
+
+------------------------
+
+vzbrat 3 instance - pro mpi cca 1 min
+nahrat na progtest
+
+zprava
+grafy/tabulky
+

@@ -1,0 +1,14 @@
+# ninja log v5
+0	976	1673537238801403522	CMakeFiles/simulated_annealing.dir/main.cpp.o	2ee635d55c047fc5
+0	44	1672931278357290248	build.ninja	6f5674543a223f6a
+976	1094	1673537238921411032	simulated_annealing	ce468f47fc5a5a1d
+1	1103	1673537728818144140	CMakeFiles/simulated_annealing.dir/main.cpp.o	2ee635d55c047fc5
+1103	1229	1673537728941484962	simulated_annealing	ce468f47fc5a5a1d
+0	784	1673538665862366956	CMakeFiles/simulated_annealing.dir/main.cpp.o	2ee635d55c047fc5
+784	864	1673538665942371901	simulated_annealing	ce468f47fc5a5a1d
+1	800	1673538674926260552	CMakeFiles/simulated_annealing.dir/main.cpp.o	2ee635d55c047fc5
+800	899	1673538675022933194	simulated_annealing	ce468f47fc5a5a1d
+1	806	1673538685800266079	CMakeFiles/simulated_annealing.dir/main.cpp.o	2ee635d55c047fc5
+806	904	1673538685896938722	simulated_annealing	ce468f47fc5a5a1d
+0	755	1673549907888494064	CMakeFiles/simulated_annealing.dir/main.cpp.o	2ee635d55c047fc5
+755	835	1673549907971832436	simulated_annealing	ce468f47fc5a5a1d
